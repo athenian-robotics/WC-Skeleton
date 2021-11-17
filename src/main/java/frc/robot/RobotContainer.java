@@ -13,9 +13,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.drive.DriveArcade;
-import frc.robot.commands.drive.DriveTank;
-import frc.robot.commands.drive.FastTurnSpeed;
-import frc.robot.commands.drive.SlowTurnSpeed;
 import frc.robot.lib.RobotType;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
@@ -70,8 +67,6 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    xboxY.whenPressed(new FastTurnSpeed());
-    xboxX.whenPressed(new SlowTurnSpeed());
 
     xboxLS.whenActive(new DriveArcade(drivetrain, xboxController));
 
