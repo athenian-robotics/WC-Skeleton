@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -26,8 +27,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
         switch(robotType) {
             case KITBOT:
-                leftMotors = new SpeedControllerGroup(new SpeedControllerGroup(new WPI_VictorSPX(leftMotor1Port), new WPI_VictorSPX(leftMotor2Port)));
-                rightMotors = new SpeedControllerGroup(new WPI_VictorSPX(rightMotor1Port), new WPI_VictorSPX(rightMotor2Port));
+                leftMotors = new SpeedControllerGroup(new SpeedControllerGroup(new WPI_TalonSRX(leftMotor1Port), new WPI_TalonSRX(leftMotor2Port)));
+                rightMotors = new SpeedControllerGroup(new WPI_TalonSRX(rightMotor1Port), new WPI_TalonSRX(rightMotor2Port));
                 break;
         }
 
@@ -37,6 +38,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
         drive = new DifferentialDrive(leftMotors, rightMotors);
         drive.setDeadband(0.2);
         drive.setMaxOutput(speedScale);
+
     }
 
     public void tankDrive(double leftSpeed, double rightSpeed) {

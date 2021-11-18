@@ -68,8 +68,6 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    xboxLS.whenActive(new DriveArcade(drivetrain, xboxController));
-
   }
 
 
