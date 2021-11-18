@@ -23,7 +23,7 @@ import frc.robot.subsystems.DrivetrainSubsystem;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-    private static final RobotType ROBOT_TYPE = RobotType.KITBOT;
+    private static final RobotType ROBOT_TYPE = RobotType.JANKBOT;
     public static JoystickButton xboxA;
     public static JoystickButton xboxB;
     public static JoystickButton xboxX;

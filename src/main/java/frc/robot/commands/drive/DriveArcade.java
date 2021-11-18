@@ -29,7 +29,7 @@ public class DriveArcade extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-//        System.out.println(-xboxController.getY(GenericHID.Hand.kLeft));
+        //See WPILib for more extensive instructions
         drivetrainSubsystem.arcadeDrive(-xboxController.getY(GenericHID.Hand.kLeft),
                 -xboxController.getX(GenericHID.Hand.kRight));
     }
