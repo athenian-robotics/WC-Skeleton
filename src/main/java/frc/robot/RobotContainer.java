@@ -23,12 +23,12 @@ import frc.robot.subsystems.DrivetrainSubsystem;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-    private static final RobotType ROBOT_TYPE = RobotType.JANKBOT;
+    private static final RobotType ROBOT_TYPE = RobotType.JANKBOT; //TODO CHANGE THIS FOR THE ROBOT YOU ARE DEPLOYING TO
     public static JoystickButton xboxA;
     public static JoystickButton xboxB;
     public static JoystickButton xboxX;
     public static JoystickButton xboxY;
-    public static JoystickButton xboxLB;
+    public static JoystickButton xboxLB; // Define all the xbox buttons and left trigger stick
     public static JoystickButton xboxRB;
     public static JoystickButton xboxSquares;
     public static JoystickButton xboxBurger;
@@ -41,10 +41,10 @@ public class RobotContainer {
 
 
   public RobotContainer() {
-      buttonSetup();
+      buttonSetup(); // Once the robot is initialized, configure and setup all xbox buttons
       configureButtonBindings();
 
-      drivetrain.setDefaultCommand(new DriveArcade(drivetrain, xboxController));
+      drivetrain.setDefaultCommand(new DriveArcade(drivetrain, xboxController)); // Automatically assign DriveArcade to the xbox controller
   }
 
   private void buttonSetup() {
@@ -57,7 +57,6 @@ public class RobotContainer {
       xboxSquares = new JoystickButton(xboxController, 7);
       xboxBurger = new JoystickButton(xboxController, 8);
       xboxLS = new Trigger();
-  //    xboxRS = new Ax();
   }
 
   /**
@@ -67,7 +66,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-
+        // Once you have more subsystems, use this function to assign buttons to their activation
   }
 
 

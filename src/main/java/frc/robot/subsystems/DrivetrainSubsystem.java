@@ -1,7 +1,5 @@
 package frc.robot.subsystems;
 
-
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -12,7 +10,7 @@ import frc.robot.lib.RobotType;
 import static frc.robot.Constants.*;
 
 public class DrivetrainSubsystem extends SubsystemBase {
-    SpeedControllerGroup leftMotors; // With more than one motor on each side, we use SpeedControllerGroup
+    SpeedControllerGroup leftMotors; // With more than one motor on each side, use  a SpeedControllerGroup
     SpeedControllerGroup rightMotors;
     private final DifferentialDrive drive; // DifferentialDrive manages steering based off of inputted power values
     public static double maxDriverSpeed = speedScale;
@@ -26,12 +24,12 @@ public class DrivetrainSubsystem extends SubsystemBase {
     public DrivetrainSubsystem(RobotType robotType) {
         // Ports are defined in Constants
         switch(robotType) {
-            // Kitbot utilizes TalonSRXs as the motor controllers.
-            case JANKBOT:
+            case JANKBOT: // JANKBOT utilizes VictorSPXs as its motor controllers
                 leftMotors = new SpeedControllerGroup(new WPI_VictorSPX(leftMotor1Port), new WPI_VictorSPX(leftMotor2Port));
                 rightMotors = new SpeedControllerGroup(new WPI_VictorSPX(rightMotor1Port), new WPI_VictorSPX(rightMotor2Port));
                 break;
-            case KITBOT:
+
+            case KITBOT: // KITBOT utilizes TalonSRXs as its motor controllers
                 leftMotors = new SpeedControllerGroup(new SpeedControllerGroup(new WPI_TalonSRX(leftMotor1Port), new WPI_TalonSRX(leftMotor2Port)));
                 rightMotors = new SpeedControllerGroup(new WPI_TalonSRX(rightMotor1Port), new WPI_TalonSRX(rightMotor2Port));
                 break;

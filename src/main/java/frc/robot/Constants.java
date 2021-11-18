@@ -18,7 +18,7 @@ package frc.robot;
 public final class Constants {
     /**
      * DRIVETRAIN CONSTANTS
-     * 0 1 2 3 --> KITBOT, JANKBOT
+     * 0 1 2 3 --> KITBOT, JANKBOT (Motor ports, in order)
      */
     public static final int leftMotor1Port = 0;
     public static final int leftMotor2Port = 1;

@@ -5,9 +5,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
-/**
- * An example command that uses an example subsystem.
- */
 public class DriveArcade extends CommandBase {
     @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
     private final DrivetrainSubsystem drivetrainSubsystem;
@@ -17,8 +14,8 @@ public class DriveArcade extends CommandBase {
     public DriveArcade(DrivetrainSubsystem drivetrainSubsystem, XboxController xboxController) {
         this.drivetrainSubsystem = drivetrainSubsystem;
         this.xboxController = xboxController;
-        // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(drivetrainSubsystem);
+
+        addRequirements(drivetrainSubsystem); // Use addRequirements() here to declare subsystem dependencies.
     }
 
     // Called when the command is initially scheduled.
