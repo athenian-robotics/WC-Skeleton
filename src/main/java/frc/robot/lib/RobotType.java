@@ -1,7 +1,7 @@
 package frc.robot.lib;
 
 public enum RobotType {
-    KITBOT(false), JANKBOT(false); // This ENUM defines all types of robots that utilize west-coast drivetrain
+    KITBOT(false), JANKBOT(false), OFFICIAL(false); // This ENUM defines all types of robots that utilize west-coast drivetrain
 
     private final boolean inverted; // Each robot will have a variable determining its inversion
 
