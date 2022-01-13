@@ -16,6 +16,7 @@ import frc.robot.commands.AutoDriveForwardTimer;
 import frc.robot.commands.drive.DriveArcade;
 import frc.robot.lib.RobotType;
 import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.subsystems.LimeLightSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -39,6 +40,7 @@ public class RobotContainer {
     public static XboxController xboxController = new XboxController(Constants.OIConstants.xboxControllerPort);
 
     private final DrivetrainSubsystem drivetrain = new DrivetrainSubsystem(ROBOT_TYPE);
+    private final LimeLightSubsystem limelight = new LimeLightSubsystem("limelight-two");
 
 
   public RobotContainer() {
