@@ -20,7 +20,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     private final DifferentialDrive drive; // DifferentialDrive manages steering based off of inputted power values
     public static double maxDriverSpeed = speedScale;
 
-    private final static DrivetrainSubsystem INSTANCE = new DrivetrainSubsystem(RobotType.KITBOT); // SubsystemBase native
+    private final static DrivetrainSubsystem INSTANCE = new DrivetrainSubsystem(RobotType.JANKBOT); // SubsystemBase native
 
     public static DrivetrainSubsystem getInstance() {
         return INSTANCE;
