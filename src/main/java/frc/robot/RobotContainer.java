@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.AutoDriveForwardTimer;
 import frc.robot.commands.drive.DriveArcade;
 import frc.robot.lib.RobotType;
 import frc.robot.subsystems.DrivetrainSubsystem;
@@ -67,6 +68,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
         // Once you have more subsystems, use this function to assign buttons to their activation
+      xboxA.whenPressed(new AutoDriveForwardTimer(drivetrain, 1));
   }
 
 
