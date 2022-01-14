@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.AutoDriveForwardTimer;
+//import frc.robot.commands.auto.AutoForwardDistance;
+import frc.robot.commands.auto.AutoForwardDistance;
 import frc.robot.commands.drive.DriveArcade;
 import frc.robot.lib.RobotType;
 import frc.robot.subsystems.DrivetrainSubsystem;
@@ -40,7 +41,7 @@ public class RobotContainer {
     public static XboxController xboxController = new XboxController(Constants.OIConstants.xboxControllerPort);
 
     private final DrivetrainSubsystem drivetrain = new DrivetrainSubsystem(ROBOT_TYPE);
-    private final LimeLightSubsystem limelight = new LimeLightSubsystem("limelight-two");
+    //private final LimeLightSubsystem limelight = new LimeLightSubsystem("limelight-two");
 
 
   public RobotContainer() {
@@ -70,7 +71,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
         // Once you have more subsystems, use this function to assign buttons to their activation
-      xboxA.whenPressed(new AutoDriveForwardTimer(drivetrain, 1));
+      xboxA.whenPressed(new AutoForwardDistance(drivetrain, 1));
   }
 
 

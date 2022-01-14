@@ -10,9 +10,7 @@ import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putNumber;
 // See http://docs.limelightvision.io/en/latest/networktables_api.html
 
 public class LimeLightSubsystem extends SubsystemBase {
-
     final NetworkTable limelight;
-
 
     public LimeLightSubsystem(String tableName) {
         this.limelight = NetworkTableInstance.getDefault().getTable(tableName);
@@ -20,7 +18,6 @@ public class LimeLightSubsystem extends SubsystemBase {
 
     public void periodic() {
         double x = limelight.getEntry("tlong").getDouble(0.0);
-
         putNumber("tlong", x);
         putNumber("distance in cm", 40/Math.tan(59.6*x/(2*960)));
     }
