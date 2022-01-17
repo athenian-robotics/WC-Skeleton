@@ -33,6 +33,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
                 rightMotors = new SpeedControllerGroup(new WPI_TalonSRX(rightMotor1Port), new WPI_TalonSRX(rightMotor2Port));
                 break;
         }
+
         leftMotors.setInverted(robotType.isInverted());
         rightMotors.setInverted(robotType.isInverted());
         drive = new DifferentialDrive(leftMotors, rightMotors);

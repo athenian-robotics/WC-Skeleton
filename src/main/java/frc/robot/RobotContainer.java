@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 //import frc.robot.commands.auto.AutoForwardDistance;
 import frc.robot.commands.auto.AutoForwardDistance;
 import frc.robot.commands.drive.DriveArcade;
+import frc.robot.commands.drive.DriveTank;
 import frc.robot.lib.RobotType;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.LimeLightSubsystem;
@@ -48,7 +49,7 @@ public class RobotContainer {
       buttonSetup(); // Once the robot is initialized, configure and setup all xbox buttons
       configureButtonBindings();
 
-      drivetrain.setDefaultCommand(new DriveArcade(drivetrain, xboxController)); // Automatically assign DriveArcade to the xbox controller
+      drivetrain.setDefaultCommand(new DriveTank(drivetrain, xboxController)); // Automatically assign DriveArcade to the xbox controller
   }
 
   private void buttonSetup() {
@@ -71,7 +72,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
         // Once you have more subsystems, use this function to assign buttons to their activation
-      xboxA.whenPressed(new AutoForwardDistance(drivetrain, 1));
+      //xboxA.whenPressed(new AutoForwardDistance(drivetrain, 1));
   }
 
 
