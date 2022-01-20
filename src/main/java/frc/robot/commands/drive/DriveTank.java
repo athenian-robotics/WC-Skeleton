@@ -25,8 +25,8 @@ public class DriveTank extends CommandBase {
     @Override
     public void execute() {
         //See WPILib for more extensive instructions
-        drivetrainSubsystem.tankDrive(-xboxController.getY(GenericHID.Hand.kLeft),
-                -xboxController.getY(GenericHID.Hand.kRight));
+        drivetrainSubsystem.tankDrive(-xboxController.getLeftY(),
+                -xboxController.getRightX());
     }
 
     @Override
