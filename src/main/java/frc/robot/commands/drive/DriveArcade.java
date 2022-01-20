@@ -27,8 +27,8 @@ public class DriveArcade extends CommandBase {
     @Override
     public void execute() {
         //See WPILib for more extensive instructions
-        drivetrainSubsystem.arcadeDrive(-xboxController.getY(GenericHID.Hand.kLeft),
-                                        -xboxController.getX(GenericHID.Hand.kRight));
+        drivetrainSubsystem.arcadeDrive(-xboxController.getLeftY(),
+                -xboxController.getRightX());
     }
 
     // Called once the command ends or is interrupted.
