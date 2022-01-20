@@ -58,14 +58,14 @@ public class DrivetrainSubsystem extends SubsystemBase {
         drive.tankDrive(leftPower, rightPower); // Calls WPILib DifferentialDrive method tankDrive(LSpeed, RSpeed)
     }
 
-    public void setMaxOutput(double maxOutput) {
-        drive.setMaxOutput(maxOutput);
-    }
-
     public void arcadeDrive(double xSpeed, double zRotation) {
         // Account for changes in turning when the forward direction changes, if it doesn't work use the one above
         drive.arcadeDrive(xSpeed * maxDriverSpeed,
                 maxDriverSpeed < 0 ? zRotation * maxDriverSpeed : -zRotation * maxDriverSpeed);
+    }
+
+    public void setMaxOutput(double maxOutput) {
+        drive.setMaxOutput(maxOutput);
     }
 
     public void resetLeftEncoder() {
