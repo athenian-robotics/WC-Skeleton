@@ -21,7 +21,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     MotorControllerGroup rightMotors;
     private final Encoder rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB, false, Encoder.EncodingType.k2X);;
     private final Encoder leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB, true, Encoder.EncodingType.k2X);
-    private final AHRS gyro = new AHRS(SerialPort.Port.kUSB);
+    private final AHRS gyro = new AHRS(SerialPort.Port.kMXP);
 
     private final DifferentialDrive drive; // DifferentialDrive manages steering based off of inputted power values
     public static double maxDriverSpeed = speedScale;
@@ -38,8 +38,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
                 rightMotors = new MotorControllerGroup(new WPI_TalonSRX(rightMotor1Port), new WPI_TalonSRX(rightMotor2Port));
                 break;
         }
-
-        leftMotors.setInverted(robotType.isInverted());
+        leftMotors.setInverted(true);
         rightMotors.setInverted(robotType.isInverted());
         drive = new DifferentialDrive(leftMotors, rightMotors);
 
@@ -82,12 +81,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public double getRightEncoderDistance() {
-        SmartDashboard.putNumber("Right Enc", rightEncoder.getDistance());
         return rightEncoder.getDistance(); // Scaled to imperial from setDistancePerPulse
     }
 
     public double getLeftEncoderDistance() {
-        SmartDashboard.putNumber("Left Enc", leftEncoder.getDistance());
         return leftEncoder.getDistance(); // Scaled to imperial from setDistancePerPulse
     }
 
@@ -117,12 +114,13 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public double getGyroAngle() {
-        return gyro.getAngle()%360.0;
+        return gyro.getAngle() % 360.0; // Returns the gyro angle (0-360)
     }
 
     @Override
     public void periodic() {
-        // SubsystemBase native method
+        SmartDashboard.putNumber("Right Encoder Distance", getRightEncoderDistance());
+        SmartDashboard.putNumber("Left Encoder Distance", getLeftEncoderDistance());
     }
 }
 

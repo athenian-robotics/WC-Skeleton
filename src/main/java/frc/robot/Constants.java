@@ -25,15 +25,15 @@ public final class Constants {
     public static final int rightMotor1Port = 2;
     public static final int rightMotor2Port = 3;
 
-    public static final int leftEncoderChannelA = 1;
-    public static final int leftEncoderChannelB = 2;
-    public static final int rightEncoderChannelA = 5;
-    public static final int rightEncoderChannelB = 6;
+    public static final int leftEncoderChannelA = 0;
+    public static final int leftEncoderChannelB = 1;
+    public static final int rightEncoderChannelA = 2;
+    public static final int rightEncoderChannelB = 3;
 
     public static final double speedScale = 0.8;
     public static final double minDrivePowerTurn = 0.35;
-    public static final double minDrivePower = 0.1;
-    public static final double maxDriveSpeed = 0.7;
+    public static final double minDrivePower = 0.2;
+    public static final double maxDriveSpeed = 0.9;
 
     public static final class OIConstants {
         public static final int xboxControllerPort = 0;

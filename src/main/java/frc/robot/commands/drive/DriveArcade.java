@@ -1,6 +1,5 @@
 package frc.robot.commands.drive;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
@@ -27,8 +26,8 @@ public class DriveArcade extends CommandBase {
     @Override
     public void execute() {
         //See WPILib for more extensive instructions
-        drivetrainSubsystem.arcadeDrive(-xboxController.getLeftY(),
-                -xboxController.getRightX());
+        drivetrainSubsystem.arcadeDrive(xboxController.getLeftY(),
+                xboxController.getRightX());
     }
 
     // Called once the command ends or is interrupted.
