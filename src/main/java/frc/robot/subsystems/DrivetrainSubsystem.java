@@ -76,7 +76,9 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public void tankDriveVolts(double leftVolts, double rightVolts) {
-
+        leftMotors.setVoltage(leftVolts);
+        rightMotors.setVoltage(rightVolts);
+        drive.feed();
     }
 
     public void arcadeDrive(double xSpeed, double zRotation) {
