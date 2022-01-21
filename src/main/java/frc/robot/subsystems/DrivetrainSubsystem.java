@@ -2,8 +2,10 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -19,6 +21,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     MotorControllerGroup rightMotors;
     private final Encoder rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB, false, Encoder.EncodingType.k2X);;
     private final Encoder leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB, true, Encoder.EncodingType.k2X);
+    private final AHRS gyro = new AHRS(SerialPort.Port.kUSB);
 
     private final DifferentialDrive drive; // DifferentialDrive manages steering based off of inputted power values
     public static double maxDriverSpeed = speedScale;
@@ -46,6 +49,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
         leftEncoder.setDistancePerPulse(6.0 * 0.0254 * Math.PI / 2048); // 6 inch wheel, to meters, 2048 ticks
         rightEncoder.setDistancePerPulse(6.0 * 0.0254 * Math.PI / 2048); // 6 inch wheel, to meters, 2048 ticks
         encoderPID = new PIDController(9, 0, 0);
+
+        gyro.reset();
     }
 
     public void tankDrive(double leftSpeed, double rightSpeed) {
@@ -109,6 +114,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
                     Math.min(pid.calculate(getRightEncoderDistance()), maxSpeed) :
                     Math.max(pid.calculate(getRightEncoderDistance()), -maxSpeed);
         }
+    }
+
+    public double getGyroAngle() {
+        return gyro.getAngle()%360.0;
     }
 
     @Override
