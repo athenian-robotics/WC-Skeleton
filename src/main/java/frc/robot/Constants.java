@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -32,11 +36,33 @@ public final class Constants {
 
     public static final double speedScale = 0.8;
     public static final double minDrivePowerTurn = 0.35;
-    public static final double minDrivePower = 0.2;
-    public static final double maxDriveSpeed = 0.9;
+
+    public static final double minDrivePower = 0.1;
+    public static final double maxDriveSpeed = 0.7;
+    public static final double maxSpeed = 3;
+    public static final double maxAcceleration = 3;
+
+    // jank bot track width m
+    public static final double trackWidth = 1;
+    public static final DifferentialDriveKinematics kDriveKinematics =
+            new DifferentialDriveKinematics(trackWidth);
+    // These characterization values MUST be determined either experimentally or theoretically
+    // for *your* robot's drive.
+    // The Robot Characterization Toolsuite provides a convenient tool for obtaining these
+    // values for your robot.
+    public static final double ksVolts = 0.22;
 
     public static final class OIConstants {
         public static final int xboxControllerPort = 0;
         public static final int fightStickPort = 1;
     }
+    public static final double kvVoltSecondsPerMeter = 1.98;
+    public static final double kaVoltSecondsSquaredPerMeter = 0.2;
+    public static final DifferentialDriveVoltageConstraint autoVoltageConstraint = new DifferentialDriveVoltageConstraint(new SimpleMotorFeedforward(Constants.ksVolts, Constants.kvVoltSecondsPerMeter, Constants.kaVoltSecondsSquaredPerMeter), kDriveKinematics, 11.0);
+    // ramesete params
+    public static final double kRamseteB = 2;
+    public static final double kRamseteZeta = 0.7;
+
+    // Example value only - as above, this must be tuned for your drive!
+    public static final double kPDriveVel = 8.5;
 }

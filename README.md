@@ -1,3 +1,5 @@
+[![CI](https://github.com/Ocean-Moist/WC-Skeleton/actions/workflows/main.yml/badge.svg)](https://github.com/Ocean-Moist/WC-Skeleton/actions/workflows/main.yml)
+
 WC-SKELETON
 =========
 WC-Skeleton implements arcade drive for the Athenian Robotics Collective's two west-coast test drivetrains: jankbot and kitbot. 
