@@ -25,6 +25,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     MotorControllerGroup rightMotors;
     public static final RamseteController ramseteController = new RamseteController();
     private final Encoder leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB, true, Encoder.EncodingType.k2X);
+
     private final AHRS gyro = new AHRS(SerialPort.Port.kUSB);
     public static DifferentialDriveOdometry odometry = null;
     private final Encoder rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB, false, Encoder.EncodingType.k2X);
@@ -46,10 +47,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
                 break;
         }
 
-
         gyro.reset();
         odometry = new DifferentialDriveOdometry(gyro.getRotation2d());
         leftMotors.setInverted(robotType.isInverted());
+
         rightMotors.setInverted(robotType.isInverted());
         drive = new DifferentialDrive(leftMotors, rightMotors);
 
@@ -97,12 +98,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public double getRightEncoderDistance() {
-        SmartDashboard.putNumber("Right Enc", rightEncoder.getDistance());
         return rightEncoder.getDistance(); // Scaled to imperial from setDistancePerPulse
     }
 
     public double getLeftEncoderDistance() {
-        SmartDashboard.putNumber("Left Enc", leftEncoder.getDistance());
         return leftEncoder.getDistance(); // Scaled to imperial from setDistancePerPulse
     }
 
@@ -150,6 +149,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public double getGyroAngle() {
+
         return gyro.getAngle() % 360.0;
     }
 

@@ -12,13 +12,11 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-//import frc.robot.commands.auto.AutoForwardDistance;
 import frc.robot.commands.auto.AutoForwardDistance;
-import frc.robot.commands.drive.DriveArcade;
 import frc.robot.commands.drive.DriveTank;
+import frc.robot.lib.ResetEncoderValues;
 import frc.robot.lib.RobotType;
 import frc.robot.subsystems.DrivetrainSubsystem;
-import frc.robot.subsystems.LimeLightSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -72,7 +70,8 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
         // Once you have more subsystems, use this function to assign buttons to their activation
-      //xboxA.whenPressed(new AutoForwardDistance(drivetrain, 1));
+      xboxA.whenPressed(new AutoForwardDistance(drivetrain, 2));
+      xboxX.whenPressed(new ResetEncoderValues(drivetrain));
   }
 
 
