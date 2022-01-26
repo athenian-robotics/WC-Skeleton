@@ -9,10 +9,14 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.auto.AutoForwardDistance;
+import frc.robot.commands.auto.FollowExampleTraj;
 import frc.robot.commands.drive.DriveTank;
 import frc.robot.lib.ResetEncoderValues;
 import frc.robot.lib.RobotType;
@@ -39,6 +43,7 @@ public class RobotContainer {
 
     public static XboxController xboxController = new XboxController(Constants.OIConstants.xboxControllerPort);
 
+    SendableChooser<Command> chooser = new SendableChooser<>();
     private final DrivetrainSubsystem drivetrain = new DrivetrainSubsystem(ROBOT_TYPE);
     //private final LimeLightSubsystem limelight = new LimeLightSubsystem("limelight-two");
 
@@ -46,6 +51,9 @@ public class RobotContainer {
   public RobotContainer() {
       buttonSetup(); // Once the robot is initialized, configure and setup all xbox buttons
       configureButtonBindings();
+      SmartDashboard.putData("AutoChooser", chooser);
+      chooser.setDefaultOption("AutoRoutine6", new FollowExampleTraj(drivetrain));
+
 
       drivetrain.setDefaultCommand(new DriveTank(drivetrain, xboxController)); // Automatically assign DriveArcade to the xbox controller
   }
@@ -81,6 +89,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return null;
+    return chooser.getSelected();
   }
 }

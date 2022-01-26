@@ -1,0 +1,11 @@
+{
+  "SysId": {
+    "Analysis Type": "Drivetrain",
+    "AnalyzerJSONLocation": "C:\\Users\\rohan\\Documents\\sysid_data20220121-204405.json",
+    "NetworkTables Settings": {
+      "serverTeam": "852"
+    },
+    "mode": "Client",
+    "serverTeam": "852"
+  }
+}
