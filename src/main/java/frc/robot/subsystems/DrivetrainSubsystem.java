@@ -26,7 +26,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     public static final RamseteController ramseteController = new RamseteController();
     private final Encoder leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB, true, Encoder.EncodingType.k2X);
 
-    private final AHRS gyro = new AHRS(SerialPort.Port.kUSB);
+    private final AHRS gyro = new AHRS(SerialPort.Port.kMXP);
     public static DifferentialDriveOdometry odometry = null;
     private final Encoder rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB, false, Encoder.EncodingType.k2X);
 
@@ -73,12 +73,12 @@ public class DrivetrainSubsystem extends SubsystemBase {
         double leftPower = ((speedScale - minDrivePower) * Math.abs(leftSpeed) + minDrivePower) * leftSign;
         double rightPower = ((speedScale - minDrivePower) * Math.abs(rightSpeed) + minDrivePower) * rightSign;
 
-        drive.tankDrive(leftPower, rightPower); // Calls WPILib DifferentialDrive method tankDrive(LSpeed, RSpeed)
+        drive.tankDrive(-leftPower, rightPower); // Calls WPILib DifferentialDrive method tankDrive(LSpeed, RSpeed)
     }
 
     public void tankDriveVolts(double leftVolts, double rightVolts) {
         leftMotors.setVoltage(leftVolts);
-        rightMotors.setVoltage(rightVolts);
+        rightMotors.setVoltage(-rightVolts);
         drive.feed();
     }
 

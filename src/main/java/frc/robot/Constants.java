@@ -50,19 +50,19 @@ public final class Constants {
     // for *your* robot's drive.
     // The Robot Characterization Toolsuite provides a convenient tool for obtaining these
     // values for your robot.
-    public static final double ksVolts = 0.22;
+    public static final double ksVolts = 1.4124;
 
     public static final class OIConstants {
         public static final int xboxControllerPort = 0;
         public static final int fightStickPort = 1;
     }
-    public static final double kvVoltSecondsPerMeter = 1.98;
-    public static final double kaVoltSecondsSquaredPerMeter = 0.2;
+    public static final double kvVoltSecondsPerMeter = 8.7779;
+    public static final double kaVoltSecondsSquaredPerMeter = 1.9229;
     public static final DifferentialDriveVoltageConstraint autoVoltageConstraint = new DifferentialDriveVoltageConstraint(new SimpleMotorFeedforward(Constants.ksVolts, Constants.kvVoltSecondsPerMeter, Constants.kaVoltSecondsSquaredPerMeter), kDriveKinematics, 11.0);
     // ramesete params
     public static final double kRamseteB = 2;
     public static final double kRamseteZeta = 0.7;
 
     // Example value only - as above, this must be tuned for your drive!
-    public static final double kPDriveVel = 8.5;
+    public static final double kPDriveVel = 1.1035;
 }
