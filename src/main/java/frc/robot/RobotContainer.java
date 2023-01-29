@@ -10,12 +10,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.drive.DriveArcade;
 import frc.robot.commands.drive.DriveTank;
 import frc.robot.lib.RobotType;
 import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.subsystems.PneumaticsSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -39,6 +41,7 @@ public class RobotContainer {
     public static XboxController xboxController = new XboxController(Constants.OIConstants.xboxControllerPort);
 
     private final DrivetrainSubsystem drivetrain = new DrivetrainSubsystem(ROBOT_TYPE);
+    private final PneumaticsSubsystem pneumatics = new PneumaticsSubsystem();
     //private final LimeLightSubsystem limelight = new LimeLightSubsystem("limelight-two");
 
 
@@ -68,9 +71,10 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
       // Once you have more subsystems, use this function to assign buttons to their activation
-      //xboxA.whenPressed(new AutoForwardDistance(drivetrain, 2));
-      //xboxX.whenPressed(new ResetEncoderValues(drivetrain));
-      //xboxB.whenPressed(new AutoTurnAngle(drivetrain, 90));
+    xboxA.onTrue(new InstantCommand(pneumatics::extendLeftPneumatic, pneumatics));
+    xboxB.onTrue(new InstantCommand(pneumatics::extendRightPneumatic, pneumatics));
+    xboxX.onTrue(new InstantCommand(pneumatics::retractLeftPneumatic, pneumatics));
+    xboxY.onTrue(new InstantCommand(pneumatics::retractRightPneumatic, pneumatics));
   }
 
   public void disableAll() {

@@ -65,4 +65,13 @@ public final class Constants {
 
     // Example value only - as above, this must be tuned for your drive!
     public static final double kPDriveVel = 8.5;
+
+    public static final class PneumaticConstants {
+        public static final int pneumaticPortRightA = 6; // SOLENOID 4
+        public static final int pneumaticPortRightB = 5;
+        public static final int pneumaticPortLeftA = 0; // SOLENOID 3
+        public static final int pneumaticPortLeftB = 2;
+
+        // Pneumatics constants ...
+    }
 }
