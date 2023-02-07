@@ -34,7 +34,7 @@ public final class Constants {
     public static final int rightEncoderChannelA = 2;
     public static final int rightEncoderChannelB = 3;
 
-    public static final double speedScale = 0.8;
+    public static final double speedScale = 1;
     public static final double minDrivePowerTurn = 0.35;
 
     public static final double minDrivePower = 0.1;
@@ -67,9 +67,9 @@ public final class Constants {
     public static final double kPDriveVel = 8.5;
 
     public static final class PneumaticConstants {
-        public static final int pneumaticPortRightA = 6; // SOLENOID 4
+        public static final int pneumaticPortRightA = 6; // SOLENOID 4 TODO: find out which is which
         public static final int pneumaticPortRightB = 5;
-        public static final int pneumaticPortLeftA = 0; // SOLENOID 3
+        public static final int pneumaticPortLeftA = 0; // SOLENOID 3 TODO: change
         public static final int pneumaticPortLeftB = 2;
 
         // Pneumatics constants ...

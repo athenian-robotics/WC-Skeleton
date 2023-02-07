@@ -27,7 +27,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     public static final RamseteController ramseteController = new RamseteController();
     private final Encoder leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB, true, Encoder.EncodingType.k2X);
 
-    private final AHRS gyro = new AHRS(SerialPort.Port.kUSB);
+    private final AHRS gyro = new AHRS(SerialPort.Port.kMXP);
     public static DifferentialDriveOdometry odometry = null;
     private final Encoder rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB, false, Encoder.EncodingType.k2X);
 
@@ -88,8 +88,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     public void arcadeDrive(double xSpeed, double zRotation) {
         // Account for changes in turning when the forward direction changes, if it doesn't work use the one above
-        drive.arcadeDrive(xSpeed * maxDriverSpeed,
-                maxDriverSpeed < 0 ? zRotation * maxDriverSpeed : -zRotation * maxDriverSpeed);
+        drive.arcadeDrive(xSpeed, zRotation );
     }
 
 
@@ -158,6 +157,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     public double getGyroPitch() {
         return gyro.getPitch();
+    }
+
+    public double getGyroRoll() {
+        return gyro.getRoll() - 13;
     }
 
     /**
@@ -245,8 +248,9 @@ public class DrivetrainSubsystem extends SubsystemBase {
         // SubsystemBase native method
         odometry.update(
                 gyro.getRotation2d(), leftEncoder.getDistance(), rightEncoder.getDistance());
-        SmartDashboard.putNumber("Gyro", getGyroAngle());
+        SmartDashboard.putNumber("Heading", getGyroAngle());
         SmartDashboard.putNumber("Pitch", getGyroPitch());
+        SmartDashboard.putNumber("Roll", getGyroRoll());
     }
 }
 
